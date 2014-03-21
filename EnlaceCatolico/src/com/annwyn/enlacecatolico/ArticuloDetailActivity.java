@@ -16,6 +16,8 @@ import android.view.MenuItem;
  * a {@link ArticuloDetailFragment}.
  */
 public class ArticuloDetailActivity extends FragmentActivity {
+	
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +26,8 @@ public class ArticuloDetailActivity extends FragmentActivity {
 
 		// Show the Up button in the action bar.
 		getActionBar().setDisplayHomeAsUpEnabled(true);
+		getActionBar().setTitle("EnlaceCatolico");
+		
 
 		// savedInstanceState is non-null when there is fragment state
 		// saved from previous configurations of this activity

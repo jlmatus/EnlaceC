@@ -71,9 +71,16 @@ public class ArticuloListFragment extends ListFragment {
 		super.onCreate(savedInstanceState);
 
 		// TODO: replace with a real list adapter.
+		
+         				
 		setListAdapter(new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
-				android.R.layout.simple_list_item_activated_1,
-				android.R.id.text1, DummyContent.ITEMS));
+				com.annwyn.enlacecatolico.R.layout.my_list  ,  
+				com.annwyn.enlacecatolico.R.id.text1  , DummyContent.ITEMS));
+		// simple_list_item_activated_1
+		//android.R.layout.simple_list_item_activated_1
+		//android.R.id.text1
+		
+		
 	}
 
 	@Override

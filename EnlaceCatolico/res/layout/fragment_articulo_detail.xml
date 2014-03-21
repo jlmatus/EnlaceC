@@ -1,10 +1,28 @@
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/articulo_detail"
-    style="?android:attr/textAppearanceLarge"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<RelativeLayout
+     xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+<TextView     
+    android:id="@+id/articulo_detail_T"
+    android:textColor="@color/titlebackgroundcolor"  
+    android:layout_width="wrap_content"
+   android:layout_height="wrap_content"
+   android:gravity="center_horizontal|left"
     android:padding="16dp"
     android:textIsSelectable="true"
     tools:context=".ArticuloDetailFragment" />
 
+
+<TextView 
+    android:id="@+id/articulo_detail"
+    style="?android:attr/textAppearanceLarge"
+    android:layout_below="@id/articulo_detail_T"    
+    android:layout_width="wrap_content"
+   android:layout_height="wrap_content"
+   android:gravity="center_horizontal|left"
+    android:padding="16dp"
+    android:textIsSelectable="true"
+    tools:context=".ArticuloDetailFragment" />
+</RelativeLayout>

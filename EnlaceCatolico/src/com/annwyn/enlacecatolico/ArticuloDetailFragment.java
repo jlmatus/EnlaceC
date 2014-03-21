@@ -54,8 +54,13 @@ public class ArticuloDetailFragment extends Fragment {
 
 		// Show the dummy content as text in a TextView.
 		if (mItem != null) {
+			
+			((TextView) rootView.findViewById(R.id.articulo_detail_T))
+			.setText(mItem.title);	
 			((TextView) rootView.findViewById(R.id.articulo_detail))
 					.setText(mItem.content);
+			((TextView) rootView.findViewById(R.id.articulo_detail_T)).setHeight(0);
+			((TextView) rootView.findViewById(R.id.articulo_detail_T)).setVisibility(View.INVISIBLE);
 		}
 
 		return rootView;

@@ -72,7 +72,7 @@ public class ArticuloListActivity extends FragmentActivity implements
 			// In single-pane mode, simply start the detail activity
 			// for the selected item ID.
 			Intent detailIntent = new Intent(this, ArticuloDetailActivity.class);
-			detailIntent.putExtra(ArticuloDetailFragment.ARG_ITEM_ID, id);
+			detailIntent.putExtra(ArticuloDetailFragment.ARG_ITEM_ID, id);			
 			startActivity(detailIntent);
 		}
 	}

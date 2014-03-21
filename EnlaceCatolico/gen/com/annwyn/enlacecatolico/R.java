@@ -10,14 +10,33 @@ package com.annwyn.enlacecatolico;
 public final class R {
     public static final class attr {
     }
+    public static final class color {
+        public static final int article_title=0x7f04000c;
+        public static final int articlecolor=0x7f04000b;
+        public static final int black=0x7f040006;
+        public static final int blue=0x7f040008;
+        public static final int blueback=0x7f04000a;
+        public static final int cachecolor=0x7f04000d;
+        public static final int date_color=0x7f040005;
+        public static final int gold=0x7f040009;
+        public static final int gray=0x7f040007;
+        public static final int orange=0x7f040002;
+        public static final int titlebackgroundcolor=0x7f040000;
+        public static final int titletextcolor=0x7f040001;
+        public static final int transparent=0x7f040004;
+        public static final int white=0x7f040003;
+    }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
         public static final int ic_launcher2=0x7f020001;
     }
     public static final class id {
-        public static final int articulo_detail=0x7f060002;
-        public static final int articulo_detail_container=0x7f060000;
-        public static final int articulo_list=0x7f060001;
+        public static final int articulo_detail=0x7f070003;
+        public static final int articulo_detail_T=0x7f070002;
+        public static final int articulo_detail_container=0x7f070000;
+        public static final int articulo_list=0x7f070001;
+        public static final int fragment_container=0x7f070004;
+        public static final int text1=0x7f070005;
     }
     public static final class layout {
         public static final int activity_articulo_detail=0x7f030000;
@@ -35,26 +54,26 @@ public final class R {
     For more on layout aliases, see:
     http://developer.android.com/training/multiscreen/screensizes.html#TaskUseAliasFilters
     
+
+    Layout alias to replace the single-pane version of the layout with a
+    two-pane version on Large screens.
+
+    For more on layout aliases, see:
+    http://developer.android.com/training/multiscreen/screensizes.html#TaskUseAliasFilters
+    
          */
         public static final int activity_articulo_list=0x7f030001;
         public static final int activity_articulo_twopane=0x7f030002;
         public static final int fragment_articulo_detail=0x7f030003;
+        public static final int main=0x7f030004;
+        public static final int my_list=0x7f030005;
     }
     public static final class string {
-        public static final int app_name=0x7f040000;
-        public static final int title_articulo_detail=0x7f040001;
+        public static final int app_name=0x7f050000;
+        public static final int title_articulo_detail=0x7f050001;
     }
     public static final class style {
         /** 
-        Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
-    
-
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-        
-
         Base application theme for API 11+. This theme completely replaces
         AppBaseTheme from res/values/styles.xml on API 11+ devices.
     
@@ -66,10 +85,11 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f050000;
-        /**  Application theme. 
- All customizations that are NOT specific to a particular API-level can go here. 
-         */
-        public static final int AppTheme=0x7f050001;
+        public static final int AppBaseTheme=0x7f060005;
+        public static final int CustomWindowTitle=0x7f060002;
+        public static final int CustomWindowTitleText=0x7f060003;
+        public static final int MyActionBar=0x7f060001;
+        public static final int ThemeSelector=0x7f060000;
+        public static final int WindowTitle=0x7f060004;
     }
 }
