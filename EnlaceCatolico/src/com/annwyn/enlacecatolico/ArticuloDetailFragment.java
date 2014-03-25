@@ -20,6 +20,8 @@ public class ArticuloDetailFragment extends Fragment {
 	 * represents.
 	 */
 	public static final String ARG_ITEM_ID = "item_id";
+	public static final String ARG_IS_TABLET = "1";
+	private boolean validate_Tablet = true;
 
 	/**
 	 * The dummy content this fragment is presenting.
@@ -44,6 +46,15 @@ public class ArticuloDetailFragment extends Fragment {
 			mItem = DummyContent.ITEM_MAP.get(getArguments().getString(
 					ARG_ITEM_ID));
 		}
+		
+		if (getArguments().containsKey(ARG_IS_TABLET)) { 
+			if (getArguments().getString(ARG_IS_TABLET).toString().equals("0") ){
+				validate_Tablet=false;
+			}
+			
+		}
+			
+		
 	}
 
 	@Override
@@ -59,9 +70,18 @@ public class ArticuloDetailFragment extends Fragment {
 			.setText(mItem.title);	
 			((TextView) rootView.findViewById(R.id.articulo_detail))
 					.setText(mItem.content);
-			((TextView) rootView.findViewById(R.id.articulo_detail_T)).setHeight(0);
-			((TextView) rootView.findViewById(R.id.articulo_detail_T)).setVisibility(View.INVISIBLE);
+			
 		}
+		
+		
+			
+			if (validate_Tablet){
+				  ((TextView) rootView.findViewById(R.id.articulo_detail_T)).setHeight(0);
+				  ((TextView) rootView.findViewById(R.id.articulo_detail_T)).setVisibility(View.INVISIBLE);	
+			}
+						  
+			
+		
 
 		return rootView;
 	}

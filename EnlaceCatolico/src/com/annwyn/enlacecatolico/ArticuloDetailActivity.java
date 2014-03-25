@@ -44,6 +44,8 @@ public class ArticuloDetailActivity extends FragmentActivity {
 			Bundle arguments = new Bundle();
 			arguments.putString(ArticuloDetailFragment.ARG_ITEM_ID, getIntent()
 					.getStringExtra(ArticuloDetailFragment.ARG_ITEM_ID));
+			arguments.putString(ArticuloDetailFragment.ARG_IS_TABLET, getIntent()
+					.getStringExtra(ArticuloDetailFragment.ARG_IS_TABLET));
 			ArticuloDetailFragment fragment = new ArticuloDetailFragment();
 			fragment.setArguments(arguments);
 			getSupportFragmentManager().beginTransaction()

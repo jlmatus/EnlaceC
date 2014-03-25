@@ -2,11 +2,12 @@ package com.annwyn.enlacecatolico;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.ListFragment;
+import android.app.ListFragment;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.annwyn.enlacecatolico.ArticuloListFragment.Callbacks;
 import com.annwyn.enlacecatolico.dummy.DummyContent;
 
 /**
@@ -18,7 +19,7 @@ import com.annwyn.enlacecatolico.dummy.DummyContent;
  * Activities containing this fragment MUST implement the {@link Callbacks}
  * interface.
  */
-public class ArticuloListFragment extends ListFragment {
+public class PadreListFragment extends ListFragment {
 
 	/**
 	 * The serialization (saved instance state) Bundle key representing the
@@ -32,6 +33,7 @@ public class ArticuloListFragment extends ListFragment {
 	 * clicks.
 	 */
 	private Callbacks mCallbacks = sDummyCallbacks;
+	private ICallbacks miCallbacks  ;
 
 	/**
 	 * The current activated item position. Only used on tablets.
@@ -64,7 +66,7 @@ public class ArticuloListFragment extends ListFragment {
 	 * Mandatory empty constructor for the fragment manager to instantiate the
 	 * fragment (e.g. upon screen orientation changes).
 	 */
-	public ArticuloListFragment() {
+	public PadreListFragment() {
 	}
 
 	@Override
@@ -99,15 +101,10 @@ public class ArticuloListFragment extends ListFragment {
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
-
-		// Activities containing this fragment must implement its callbacks.
-		if (!(activity instanceof Callbacks)) {
-			throw new IllegalStateException(
-					"Activity must implement fragment's callbacks.");
-		}
-
-		mCallbacks = (Callbacks) activity;
+		miCallbacks = (ICallbacks) activity;
+		
 	}
+	
 
 	@Override
 	public void onDetach() {
@@ -124,7 +121,10 @@ public class ArticuloListFragment extends ListFragment {
 
 		// Notify the active callbacks interface (the activity, if the
 		// fragment is attached to one) that an item has been selected.
-		mCallbacks.onItemSelected(DummyContent.ITEMS.get(position).id);
+		//mCallbacks.onItemSelected(DummyContent.ITEMS.get(position).id);
+		
+		miCallbacks.onItemSelectedPadre(DummyContent.ITEMS.get(position).id);
+        
 	}
 
 	@Override

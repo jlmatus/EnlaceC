@@ -6,10 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Helper class for providing sample content for user interfaces created by
- * Android template wizards.
- * <p>
- * TODO: Replace all uses of this class before publishing your app.
+ ** Clase con contenido DUMMY para cargar en la aplicacion 
  */
 public class DummyContent {
 
@@ -46,7 +43,8 @@ public class DummyContent {
 	}
 
 	/**
-	 * A dummy item representing a piece of content.
+	 * A dummy item that contains a unique ID that represents the position of
+	 * the element, the title and the content.
 	 */
 	public static class DummyItem {
 		public String id;
@@ -59,6 +57,10 @@ public class DummyContent {
 			this.content = content;
 		}
 
+		/**
+		 * This method returns only the title because that's the way it is
+		 * used in the fragments 
+		 */
 		@Override
 		public String toString() {
 			return title;

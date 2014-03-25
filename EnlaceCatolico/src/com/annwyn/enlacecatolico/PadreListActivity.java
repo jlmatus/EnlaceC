@@ -2,7 +2,10 @@ package com.annwyn.enlacecatolico;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.app.Fragment;
 
 /**
  * An activity representing a list of Articulos. This activity has different
@@ -20,7 +23,7 @@ import android.support.v4.app.FragmentActivity;
  * {@link ArticuloListFragment.Callbacks} interface to listen for item
  * selections.
  */
-public class ArticuloListActivity extends FragmentActivity implements
+public class PadreListActivity extends Fragment implements
 		ArticuloListFragment.Callbacks {
 
 	/**
@@ -28,26 +31,20 @@ public class ArticuloListActivity extends FragmentActivity implements
 	 * device.
 	 */
 	private boolean mTwoPane;
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+	}
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_articulo_list);
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+				
+		View rootView = inflater.inflate(R.layout.activity_articulo_list,
+				container, false);
 
-		if (findViewById(R.id.articulo_detail_container) != null) {
-			// The detail container view will be present only in the
-			// large-screen layouts (res/values-large and
-			// res/values-sw600dp). If this view is present, then the
-			// activity should be in two-pane mode.
-			mTwoPane = true;
-
-			// In two-pane mode, list items should be given the
-			// 'activated' state when touched.
-			((ArticuloListFragment) getSupportFragmentManager()
-					.findFragmentById(R.id.articulo_list))
-					.setActivateOnItemClick(true);
-		}
-
+		return rootView;
 		// TODO: If exposing deep links into your app, handle intents here.
 	}
 
@@ -65,16 +62,12 @@ public class ArticuloListActivity extends FragmentActivity implements
 			arguments.putString(ArticuloDetailFragment.ARG_ITEM_ID, id);
 			ArticuloDetailFragment fragment = new ArticuloDetailFragment();
 			fragment.setArguments(arguments);
-			getSupportFragmentManager().beginTransaction()
-					.replace(R.id.articulo_detail_container, fragment).commit();
+			
 
 		} else {
 			// In single-pane mode, simply start the detail activity
 			// for the selected item ID.
-			Intent detailIntent = new Intent(this, ArticuloDetailActivity.class);
-			detailIntent.putExtra(ArticuloDetailFragment.ARG_ITEM_ID, id);
-			detailIntent.putExtra(ArticuloDetailFragment.ARG_IS_TABLET,"0" );
-			startActivity(detailIntent);
+			
 		}
 	}
 }

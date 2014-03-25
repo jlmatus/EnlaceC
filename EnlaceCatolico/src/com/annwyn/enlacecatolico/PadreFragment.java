@@ -32,21 +32,13 @@ public class PadreFragment extends Fragment {
 		super.onActivityCreated(savedInstanceState);
 		
 		//mGridview.setAdapter(new ImageAdapter(getActivity(), mThumbNailIDs));
-		mGridview.setOnItemClickListener(new OnItemClickListener() {
-			public void onItemClick(AdapterView<?> parent, View v,
-					int position, long id) {
-				Intent intent = new Intent(getActivity(),
-						ArticuloListActivity.class);
-				intent.putExtra(EXTRA_RES_ID, (int) id);
-				startActivity(intent);
-			}
-		});
+		
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View view =  inflater.inflate(R.layout.main, container, false);
+		View view =  inflater.inflate(R.layout.my_list, container, false);
 		//mGridview = (GridView) view.findViewById(R.id.gridview);  
 		return view;	
 	}
