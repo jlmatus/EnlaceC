@@ -65,7 +65,7 @@ public class ArticuloDetailActivity extends FragmentActivity {
 			// http://developer.android.com/design/patterns/navigation.html#up-vs-back
 			//
 			NavUtils.navigateUpTo(this, new Intent(this,
-					ArticuloListActivity.class));
+					Menu.class));
 			return true;
 		}
 		return super.onOptionsItemSelected(item);

@@ -15,11 +15,17 @@ import android.os.Bundle;
 
 
 public class Menu extends Activity  implements ICallbacks {
-	
+	private boolean mTwoPane;
 	@Override
 	protected void onCreate(Bundle savedInstantce){
 		super.onCreate(savedInstantce);
 		setContentView(R.layout.menu_principal);
+		
+		if (findViewById(R.id.padre_detail_container) != null) {
+			mTwoPane = true;
+			
+			
+		}
 		
 		ActionBar actionBar = getActionBar();
 		//actionBar.setDisplayHomeAsUpEnabled(true);
@@ -60,6 +66,16 @@ public class Menu extends Activity  implements ICallbacks {
 		public void onTabSelected(Tab arg0, FragmentTransaction arg1) {
 			if (null != arg0) {
 				arg1.replace(R.id.padre_list , fragment);
+				if (mTwoPane) 
+					//if (!fragment.getClass().toString().equals("PadreListFragment"))
+					{
+						
+					onItemSelectedPadre("0");
+						
+					}
+				 
+				
+				
 			}
 			
 		}
@@ -67,7 +83,8 @@ public class Menu extends Activity  implements ICallbacks {
 		@Override
 		public void onTabUnselected(Tab arg0, FragmentTransaction arg1) {
 			// TODO Auto-generated method stub
-			arg1.remove(fragment);
+			arg1.remove(fragment);		
+				
 			
 		}
 		
@@ -76,11 +93,24 @@ public class Menu extends Activity  implements ICallbacks {
 
 	@Override
 	public void onItemSelectedPadre(String id) {
+		
+		if (mTwoPane) {
+			
+			Bundle arguments = new Bundle();
+			arguments.putString(PadreDetailFragment.ARG_ITEM_ID, id);
+			Fragment fragment = new PadreDetailFragment();
+			fragment.setArguments(arguments);
+			FragmentTransaction transaction = getFragmentManager().beginTransaction();
+			transaction.replace(R.id.padre_detail_container , fragment).commit();
+			
+		} else {	
 		Intent detailIntent = new Intent(this, ArticuloDetailActivity.class);
 		detailIntent.putExtra(ArticuloDetailFragment.ARG_ITEM_ID, id);
 		detailIntent.putExtra(ArticuloDetailFragment.ARG_IS_TABLET,"0" );
 		startActivity(detailIntent);
+			}
 		
-	}
+		}
+	
 	
 }

@@ -8,5 +8,6 @@
     http://developer.android.com/training/multiscreen/screensizes.html#TaskUseAliasFilters
     -->
     <item name="activity_articulo_list" type="layout">@layout/activity_articulo_twopane</item>
+    <item name="menu_principal" type="layout">@layout/main_twopane</item>
 
 </resources>
