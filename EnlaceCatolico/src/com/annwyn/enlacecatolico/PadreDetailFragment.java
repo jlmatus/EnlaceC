@@ -44,8 +44,30 @@ public class PadreDetailFragment extends Fragment {
 			// Load the dummy content specified by the fragment
 			// arguments. In a real-world scenario, use a Loader
 			// to load content from a content provider.
+			Thread t = new Thread (  new Runnable() {
+		  	      @Override
+		  	      public void run() {
+		  	        // Create a connection
+		  	    	  
+		  		  	    	
+		  	    	try 
+		  	    	{
 			mItem = PbroOscarContent.ITEM_MAP.get(getArguments().getString(
 					ARG_ITEM_ID));
+		  	    	}	  
+  	      	    	
+		  	    	
+		  	    	catch (Exception e){
+		  	    		
+		  	    		
+		  	    		
+		  	    	}
+		  	              
+		  	           }
+		  	      }
+			
+					);
+		  	    t.start();
 		}
 		
 		if (getArguments().containsKey(ARG_IS_TABLET)) { 

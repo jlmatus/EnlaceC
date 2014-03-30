@@ -92,7 +92,8 @@ public class PadreListFragment extends ListFragment {
 	  		  	    	
 	  	    	try 
 	  	    	{
-	  		  	    			  	    		
+	  		  	    
+	  	    			  	    		
 	  	    		setListAdapter(new ArrayAdapter<PbroOscarContent.PbroOscarItem>(getActivity(),
 	  	  				com.annwyn.enlacecatolico.R.layout.my_list  ,  
 	  	  				com.annwyn.enlacecatolico.R.id.text1  , PbroOscarContent.ITEMS)); 	    		
