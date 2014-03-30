@@ -24,7 +24,7 @@ import com.annwyn.data.*;
  * Activities containing this fragment MUST implement the {@link Callbacks}
  * interface.
  */
-public class PadreListFragment extends ListFragment {
+public class AciListFragment extends ListFragment {
 
 	/**
 	 * The serialization (saved instance state) Bundle key representing the
@@ -71,7 +71,7 @@ public class PadreListFragment extends ListFragment {
 	 * Mandatory empty constructor for the fragment manager to instantiate the
 	 * fragment (e.g. upon screen orientation changes).
 	 */
-	public PadreListFragment() {
+	public AciListFragment() {
 	}
 
 	@Override
@@ -93,9 +93,9 @@ public class PadreListFragment extends ListFragment {
 	  	    	try 
 	  	    	{
 	  		  	    			  	    		
-	  	    		setListAdapter(new ArrayAdapter<PbroOscarContent.PbroOscarItem>(getActivity(),
+	  	    		setListAdapter(new ArrayAdapter<AciPrensaContent.AciPrensaItem>(getActivity(),
 	  	  				com.annwyn.enlacecatolico.R.layout.my_list  ,  
-	  	  				com.annwyn.enlacecatolico.R.id.text1  , PbroOscarContent.ITEMS)); 	    		
+	  	  				com.annwyn.enlacecatolico.R.id.text1  , AciPrensaContent.ITEMS)); 	    		
 	  	    		 	    		
 	  	    		dialog.dismiss();
 	  	    		
@@ -161,7 +161,7 @@ public class PadreListFragment extends ListFragment {
 		// fragment is attached to one) that an item has been selected.
 		//mCallbacks.onItemSelected(DummyContent.ITEMS.get(position).id);
 		
-		miCallbacks.onItemSelectedPadre(PbroOscarContent.ITEMS.get(position).id);
+		miCallbacks.onItemSelectedAci(AciPrensaContent.ITEMS.get(position).id);
         
 	}
 

@@ -16,7 +16,7 @@ import android.view.MenuItem;
  * This activity is mostly just a 'shell' activity containing nothing more than
  * a {@link ArticuloDetailFragment}.
  */
-public class ArticuloDetailActivity extends FragmentActivity {
+public class AciDetailActivity extends FragmentActivity {
 	
 	
 
@@ -43,11 +43,11 @@ public class ArticuloDetailActivity extends FragmentActivity {
 			// Create the detail fragment and add it to the activity
 			// using a fragment transaction.
 			Bundle arguments = new Bundle();
-			arguments.putString(PadreDetailFragment.ARG_ITEM_ID, getIntent()
-					.getStringExtra(PadreDetailFragment.ARG_ITEM_ID));
-			arguments.putString(PadreDetailFragment.ARG_IS_TABLET, getIntent()
-					.getStringExtra(PadreDetailFragment.ARG_IS_TABLET));
-			PadreDetailFragment fragment = new PadreDetailFragment();
+			arguments.putString(AciDetailFragment.ARG_ITEM_ID, getIntent()
+					.getStringExtra(AciDetailFragment.ARG_ITEM_ID));
+			arguments.putString(AciDetailFragment.ARG_IS_TABLET, getIntent()
+					.getStringExtra(AciDetailFragment.ARG_IS_TABLET));
+			AciDetailFragment fragment = new AciDetailFragment();
 			fragment.setArguments(arguments);
 			getFragmentManager().beginTransaction()
 					.add(R.id.articulo_detail_container, fragment).commit();

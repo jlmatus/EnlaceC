@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.annwyn.data.AciPrensaContent;
 import com.annwyn.data.PbroOscarContent;
 import com.annwyn.enlacecatolico.dummy.DummyContent;
 
@@ -15,7 +16,7 @@ import com.annwyn.enlacecatolico.dummy.DummyContent;
  * either contained in a {@link ArticuloListActivity} in two-pane mode (on
  * tablets) or a {@link ArticuloDetailActivity} on handsets.
  */
-public class PadreDetailFragment extends Fragment {
+public class AciDetailFragment extends Fragment {
 	/**
 	 * The fragment argument representing the item ID that this fragment
 	 * represents.
@@ -27,13 +28,13 @@ public class PadreDetailFragment extends Fragment {
 	/**
 	 * The dummy content this fragment is presenting.
 	 */
-	private PbroOscarContent.PbroOscarItem mItem;
+	private AciPrensaContent.AciPrensaItem mItem;
 
 	/**
 	 * Mandatory empty constructor for the fragment manager to instantiate the
 	 * fragment (e.g. upon screen orientation changes).
 	 */
-	public PadreDetailFragment() {
+	public AciDetailFragment() {
 	}
 
 	@Override
@@ -44,7 +45,7 @@ public class PadreDetailFragment extends Fragment {
 			// Load the dummy content specified by the fragment
 			// arguments. In a real-world scenario, use a Loader
 			// to load content from a content provider.
-			mItem = PbroOscarContent.ITEM_MAP.get(getArguments().getString(
+			mItem = AciPrensaContent.ITEM_MAP.get(getArguments().getString(
 					ARG_ITEM_ID));
 		}
 		

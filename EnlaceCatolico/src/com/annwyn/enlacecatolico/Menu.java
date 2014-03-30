@@ -6,6 +6,7 @@ import android.app.ActionBar.Tab;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -35,10 +36,10 @@ public class Menu extends Activity  implements ICallbacks {
 		ActionBar.Tab tab2 = actionBar.newTab().setText("ACI Prensa");
 		
 		Fragment PadreListFragment = new PadreListFragment();
-		Fragment PadreFragment = new PadreFragment();
+		Fragment AciFragment = new AciListFragment();
 		
 		tab1.setTabListener(new MyTabsListener(PadreListFragment));
-		tab2.setTabListener(new MyTabsListener(PadreFragment));
+		tab2.setTabListener(new MyTabsListener(AciFragment));
 		
 		
 		actionBar.addTab(tab1);
@@ -65,6 +66,7 @@ public class Menu extends Activity  implements ICallbacks {
 		@Override
 		public void onTabSelected(Tab arg0, FragmentTransaction arg1) {
 			if (null != arg0) {
+				 
 				arg1.replace(R.id.padre_list , fragment);
 				if (mTwoPane) 
 					//if (!fragment.getClass().toString().equals("PadreListFragment"))
@@ -74,8 +76,8 @@ public class Menu extends Activity  implements ICallbacks {
 						
 					}
 				 
-				
-				
+				 
+			//final del if de arg null	
 			}
 			
 		}
@@ -93,6 +95,7 @@ public class Menu extends Activity  implements ICallbacks {
 
 	@Override
 	public void onItemSelectedPadre(String id) {
+	 	
 		
 		if (mTwoPane) {
 			
@@ -105,12 +108,33 @@ public class Menu extends Activity  implements ICallbacks {
 			
 		} else {	
 		Intent detailIntent = new Intent(this, ArticuloDetailActivity.class);
-		detailIntent.putExtra(ArticuloDetailFragment.ARG_ITEM_ID, id);
-		detailIntent.putExtra(ArticuloDetailFragment.ARG_IS_TABLET,"0" );
+		detailIntent.putExtra(PadreDetailFragment.ARG_ITEM_ID, id);
+		detailIntent.putExtra(PadreDetailFragment.ARG_IS_TABLET,"0" );
 		startActivity(detailIntent);
 			}
 		
 		}
+
+
+	@Override
+	public void onItemSelectedAci(String id) {
+if (mTwoPane) {
+			
+			Bundle arguments = new Bundle();
+			arguments.putString(AciDetailFragment.ARG_ITEM_ID, id);
+			Fragment fragment = new AciDetailFragment();
+			fragment.setArguments(arguments);
+			FragmentTransaction transaction = getFragmentManager().beginTransaction();
+			transaction.replace(R.id.padre_detail_container , fragment).commit();
+			
+		} else {	
+		Intent detailIntent = new Intent(this, AciDetailActivity.class);
+		detailIntent.putExtra(AciDetailFragment.ARG_ITEM_ID, id);
+		detailIntent.putExtra(AciDetailFragment.ARG_IS_TABLET,"0" );
+		startActivity(detailIntent);
+			}
+		
+	}
 	
 	
 }

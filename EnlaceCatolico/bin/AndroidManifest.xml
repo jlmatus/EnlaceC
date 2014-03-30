@@ -7,6 +7,8 @@
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="16" />
+    
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -30,6 +32,19 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ArticuloListActivity" />
         </activity>
+        
+        <activity
+            android:name="com.annwyn.enlacecatolico.AciDetailActivity"
+            android:label="@string/title_articulo_detail"
+            android:parentActivityName=".Menu" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Menu" />
+        </activity>
+        
+        
     </application>
+    
+    
 
 </manifest>
