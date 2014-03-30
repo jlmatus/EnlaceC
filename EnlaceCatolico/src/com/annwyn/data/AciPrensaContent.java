@@ -17,6 +17,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import android.text.Html;
+
 /**
  ** Clase con contenido DUMMY para cargar en la aplicacion 
  */
@@ -65,7 +67,7 @@ public class AciPrensaContent {
 						id++;
 						title = (property.getFirstChild().getNodeValue());
 					} else if (name.equalsIgnoreCase("description")){
-						content = (property.getFirstChild().getNodeValue());				
+						content = Html.fromHtml(property.getFirstChild().getNodeValue()).toString();				
 					}
 				}
 				addItem(new AciPrensaItem(Integer.toString(id),title,content));
