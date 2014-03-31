@@ -23,20 +23,13 @@ import android.text.Html;
  ** Clase con contenido DUMMY para cargar en la aplicacion 
  */
 public class AciPrensaContent {
-
-	/**
-	 * An array of sample (dummy) items.
-	 */
-	public static List<AciPrensaItem> ITEMS = new ArrayList<AciPrensaItem>();
-
-	/**
-	 * A map of sample (dummy) items, by ID.
-	 */
-	public static Map<String, AciPrensaItem> ITEM_MAP = new HashMap<String, AciPrensaItem>();
-
-	static {
+	
+	public static void GetContent (){
 		
-		URL url = null;
+		if (ITEMS.size()==0 )
+		{
+	
+       URL url = null;
 		
 		int id = 0;
 		String title = "", content = "";
@@ -75,7 +68,22 @@ public class AciPrensaContent {
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		} 
+
 	}
+	}
+	/**
+	 * An array of sample (dummy) items.
+	 */
+	public static List<AciPrensaItem> ITEMS = new ArrayList<AciPrensaItem>();
+
+	/**
+	 * A map of sample (dummy) items, by ID.
+	 */
+	public static Map<String, AciPrensaItem> ITEM_MAP = new HashMap<String, AciPrensaItem>();
+
+	static {
+		
+			}
 
 	private static void addItem(AciPrensaItem item) {
 		ITEMS.add(item);

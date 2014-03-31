@@ -47,12 +47,17 @@ public class Menu extends Activity  implements ICallbacks {
 		actionBar.addTab(tab1);
 		actionBar.addTab(tab2);
 		
+		//tab1.select();
+		//tab2.select();
+		//tab1.select();
 		
-		tab1.select();
+		
 		
 		//Fragment fragment = new PadreDetailFragment();		
-		//FragmentTransaction transaction = getFragmentManager().beginTransaction();
+     	//FragmentTransaction transaction = getFragmentManager().beginTransaction();
 		//transaction.replace(R.id.padre_list , AciFragment);
+		//transaction.replace(R.id.padre_list , PadreListFragment).commit();
+		
 		
 		//FragmentTransaction transaction = getFragmentManager().beginTransaction();
 		//transaction.replace(R.id.padre_list , PadreListFragment).commit();

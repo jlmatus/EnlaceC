@@ -23,19 +23,11 @@ import android.text.Html;
  ** Clase con contenido DUMMY para cargar en la aplicacion 
  */
 public class PbroOscarContent {
-
-	/**
-	 * An array of sample (dummy) items.
-	 */
-	public static List<PbroOscarItem> ITEMS = new ArrayList<PbroOscarItem>();
-
-	/**
-	 * A map of sample (dummy) items, by ID.
-	 */
-	public static Map<String, PbroOscarItem> ITEM_MAP = new HashMap<String, PbroOscarItem>();
-
-	static {
-		
+	
+	public static void GetContent (){
+      
+	if (ITEMS.size()==0 )
+	{
 		URL url = null;
 		
 		int id = 0;
@@ -73,7 +65,22 @@ public class PbroOscarContent {
 			}
 		} catch (Exception e) {
 			throw new RuntimeException(e);
-		} 
+		}
+	}
+	}
+	/**
+	 * An array of sample (dummy) items.
+	 */
+	public static List<PbroOscarItem> ITEMS = new ArrayList<PbroOscarItem>();
+
+	/**
+	 * A map of sample (dummy) items, by ID.
+	 */
+	public static Map<String, PbroOscarItem> ITEM_MAP = new HashMap<String, PbroOscarItem>();
+
+	static {
+		
+		 
 	}
 
 	private static void addItem(PbroOscarItem item) {

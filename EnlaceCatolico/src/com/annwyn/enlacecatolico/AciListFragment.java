@@ -83,7 +83,7 @@ public class AciListFragment extends ListFragment {
 		
 		
 		 final Activity actividad = this.getActivity();
-		 final ProgressDialog dialog = ProgressDialog.show(this.getActivity(), "Connecting...", "Please wait...", false);
+		 //final ProgressDialog dialog = ProgressDialog.show(this.getActivity(), "Connecting...", "Please wait...", false);
 		Thread t = new Thread (  new Runnable() {
 	  	      @Override
 	  	      public void run() {
@@ -92,18 +92,24 @@ public class AciListFragment extends ListFragment {
 	  		  	    	
 	  	    	try 
 	  	    	{
-	  		  	    			  	    		
+	  	    		AciPrensaContent.GetContent();	
+	  	    		
+	  	    		actividad.runOnUiThread(new Runnable() {
+
+	  	    			@Override
+	  	    			public void run() {
 	  	    		setListAdapter(new ArrayAdapter<AciPrensaContent.AciPrensaItem>(getActivity(),
 	  	  				com.annwyn.enlacecatolico.R.layout.my_list  ,  
 	  	  				com.annwyn.enlacecatolico.R.id.text1  , AciPrensaContent.ITEMS)); 	    		
-	  	    		 	    		
-	  	    		dialog.dismiss();
+	  	    		    }
+  	    			});	    		
+	  	    		//dialog.dismiss();
 	  	    		
 	  	    		}	  
 	  	      	    	
 	  	    	
 	  	    	catch (Exception e){
-	  	    		dialog.dismiss();
+	  	    		//dialog.dismiss();
 	  	    		
 	  	    		
 	  	    	}
@@ -113,7 +119,7 @@ public class AciListFragment extends ListFragment {
 		
 				);
 	  	    t.start();
-	  	  dialog.show();
+	  	  //dialog.show();
 	  	  
 	    }
 		

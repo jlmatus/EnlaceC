@@ -83,7 +83,7 @@ public class PadreListFragment extends ListFragment {
 		
 		
 		 final Activity actividad = this.getActivity();
-		 final ProgressDialog dialog = ProgressDialog.show(this.getActivity(), "Connecting...", "Please wait...", false);
+		 //final ProgressDialog dialog = ProgressDialog.show(this.getActivity(), "Connecting...", "Please wait...", false);
 		Thread t = new Thread (  new Runnable() {
 	  	      @Override
 	  	      public void run() {
@@ -93,18 +93,27 @@ public class PadreListFragment extends ListFragment {
 	  	    	try 
 	  	    	{
 	  		  	    
-	  	    			  	    		
-	  	    		setListAdapter(new ArrayAdapter<PbroOscarContent.PbroOscarItem>(getActivity(),
-	  	  				com.annwyn.enlacecatolico.R.layout.my_list  ,  
-	  	  				com.annwyn.enlacecatolico.R.id.text1  , PbroOscarContent.ITEMS)); 	    		
+	  	    		PbroOscarContent.GetContent();
+	  	    		
+	  	    		actividad.runOnUiThread(new Runnable() {
+
+	  	    			@Override
+	  	    			public void run() {
+	  	    				setListAdapter(new ArrayAdapter<PbroOscarContent.PbroOscarItem>(getActivity(),
+	  	  	  	  				com.annwyn.enlacecatolico.R.layout.my_list  ,  
+	  	  	  	  				com.annwyn.enlacecatolico.R.id.text1  , PbroOscarContent.ITEMS));
+	  	    			    }
+	  	    			});
+	  	    		 	
+	  	    		
 	  	    		 	    		
-	  	    		dialog.dismiss();
+	  	    		//dialog.dismiss();
 	  	    		
 	  	    		}	  
 	  	      	    	
 	  	    	
 	  	    	catch (Exception e){
-	  	    		dialog.dismiss();
+	  	    		//dialog.dismiss();
 	  	    		
 	  	    		
 	  	    	}
@@ -114,7 +123,7 @@ public class PadreListFragment extends ListFragment {
 		
 				);
 	  	    t.start();
-	  	  dialog.show();
+	  	  //dialog.show();
 	  	  
 	    }
 		
@@ -135,6 +144,8 @@ public class PadreListFragment extends ListFragment {
 			setActivatedPosition(savedInstanceState
 					.getInt(STATE_ACTIVATED_POSITION));
 		}
+		
+		
 	}
 
 	@Override
