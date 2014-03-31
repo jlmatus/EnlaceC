@@ -44,9 +44,9 @@ public class PadreDetailFragment extends Fragment {
 			// Load the dummy content specified by the fragment
 			// arguments. In a real-world scenario, use a Loader
 			// to load content from a content provider.
-			Thread t = new Thread (  new Runnable() {
-		  	      @Override
-		  	      public void run() {
+			///Thread t = new Thread (  new Runnable() {
+		  	   ///   @Override
+		  	      ///public void run() {
 		  	        // Create a connection
 		  	    	  
 		  		  	    	
@@ -63,11 +63,11 @@ public class PadreDetailFragment extends Fragment {
 		  	    		
 		  	    	}
 		  	              
-		  	           }
-		  	      }
+		///  	           }
+		  	///      }
 			
-					);
-		  	    t.start();
+				///	);
+		  	    ///t.start();
 		}
 		
 		if (getArguments().containsKey(ARG_IS_TABLET)) { 

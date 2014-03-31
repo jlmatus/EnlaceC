@@ -79,7 +79,7 @@ public class AciListFragment extends ListFragment {
 		super.onCreate(savedInstanceState);
 
 		// TODO: replace with a real list adapter.
-		
+		setRetainInstance(true);
 		
 		
 		 final Activity actividad = this.getActivity();
