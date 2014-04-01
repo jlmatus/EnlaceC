@@ -1,10 +1,13 @@
 package com.annwyn.enlacecatolico;
 
 
+import com.annwyn.enlacecatolico.DataLoaderFragment.ProgressListener;
+
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -15,52 +18,41 @@ import android.os.Bundle;
 
 
 
-public class Menu extends Activity  implements ICallbacks {
+public class Menu extends Activity  implements ICallbacks, ProgressListener {
 	private boolean mTwoPane;
+	private static final String TAG_DATA_LOADER = "dataLoader";
+    private static final String TAG_SPLASH_SCREEN = "splashScreen";
+
+    private DataLoaderFragment mDataLoaderFragment;
+    private SplashScreenFragment mSplashScreenFragment;
+	
+    
+   
+    
+	
 	@Override
 	protected void onCreate(Bundle savedInstantce){
 		super.onCreate(savedInstantce);
-		setContentView(R.layout.menu_principal);
-		
-		if (findViewById(R.id.padre_detail_container) != null) {
-			mTwoPane = true;
-			
-			
-		}
-		
-		ActionBar actionBar = getActionBar();
-		//actionBar.setDisplayHomeAsUpEnabled(true);
-		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-		
-		ActionBar.Tab tab1 = actionBar.newTab().setText("Padre Oscar");
-		ActionBar.Tab tab2 = actionBar.newTab().setText("ACI Prensa");
-		
-		Fragment PadreListFragment = new PadreListFragment();
-		Fragment AciFragment = new AciListFragment();
-		
-		
-		
-		tab1.setTabListener(new MyTabsListener(PadreListFragment));
-		tab2.setTabListener(new MyTabsListener(AciFragment));
-		
-		
-		actionBar.addTab(tab1);
-		actionBar.addTab(tab2);
-		
-		//tab1.select();
-		//tab2.select();
-		//tab1.select();
-		
-		
-		
-		//Fragment fragment = new PadreDetailFragment();		
-     	//FragmentTransaction transaction = getFragmentManager().beginTransaction();
-		//transaction.replace(R.id.padre_list , AciFragment);
-		//transaction.replace(R.id.padre_list , PadreListFragment).commit();
-		
-		
-		//FragmentTransaction transaction = getFragmentManager().beginTransaction();
-		//transaction.replace(R.id.padre_list , PadreListFragment).commit();
+		final FragmentManager fm = getFragmentManager();
+        mDataLoaderFragment = (DataLoaderFragment) fm.findFragmentByTag(TAG_DATA_LOADER);
+        if (mDataLoaderFragment == null) {
+            mDataLoaderFragment = new DataLoaderFragment();
+            mDataLoaderFragment.setProgressListener(this);
+            mDataLoaderFragment.startLoading();
+            fm.beginTransaction().add(mDataLoaderFragment, TAG_DATA_LOADER).commit();
+        } else {
+            if (checkCompletionStatus()) {
+            	
+                return;
+            }
+        }
+
+        // Show loading fragment
+        mSplashScreenFragment = (SplashScreenFragment) fm.findFragmentByTag(TAG_SPLASH_SCREEN);
+        if (mSplashScreenFragment == null) {
+            mSplashScreenFragment = new SplashScreenFragment();
+            fm.beginTransaction().add(android.R.id.content, mSplashScreenFragment, TAG_SPLASH_SCREEN).commit();
+        }
 		
 		
 	}
@@ -152,6 +144,90 @@ if (mTwoPane) {
 			}
 		
 	}
+
+
+	@Override
+	public void onCompletion(Double result) {
+		// TODO Auto-generated method stub
+		crear_tab();
+		
+	}
+
+	@Override
+    protected void onStart() {
+        super.onStart();
+        if (mDataLoaderFragment != null) {
+            checkCompletionStatus();
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (mDataLoaderFragment != null) {
+            mDataLoaderFragment.removeProgressListener();
+        }
+    }
+
 	
+	
+	@Override
+	public void onProgressUpdate(int progress) {
+		// TODO Auto-generated method stub
+		 mSplashScreenFragment.setProgress(progress);
+		
+	}
+	
+	
+	 /**
+     * Checks if data is done loading, if it is, the result is handled
+     *
+     * @return true if data is done loading
+     */
+    private boolean checkCompletionStatus() {
+        if (mDataLoaderFragment.hasResult()) {
+            onCompletion(mDataLoaderFragment.getResult());
+            FragmentManager fm = getFragmentManager();
+            mSplashScreenFragment = (SplashScreenFragment) fm.findFragmentByTag(TAG_SPLASH_SCREEN);
+            if (mSplashScreenFragment != null) {
+                fm.beginTransaction().remove(mSplashScreenFragment). commit();
+            }
+            return true;
+        }
+        mDataLoaderFragment.setProgressListener(this);
+        return false;
+    }
+    
+    private void crear_tab() {
+    	
+setContentView(R.layout.menu_principal);
+		
+		if (findViewById(R.id.padre_detail_container) != null) {
+			mTwoPane = true;
+			
+			
+		}
+		
+		ActionBar actionBar = getActionBar();
+		actionBar.removeAllTabs();
+		//actionBar.setDisplayHomeAsUpEnabled(true);
+		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+		
+		ActionBar.Tab tab1 = actionBar.newTab().setText("Padre Oscar");
+		ActionBar.Tab tab2 = actionBar.newTab().setText("ACI Prensa");
+		
+		Fragment PadreListFragment = new PadreListFragment();
+		Fragment AciFragment = new AciListFragment();
+		
+		
+		
+		tab1.setTabListener(new MyTabsListener(PadreListFragment));
+		tab2.setTabListener(new MyTabsListener(AciFragment));
+		
+		
+		actionBar.addTab(tab1);
+		actionBar.addTab(tab2);
+    	
+    }
 	
 }

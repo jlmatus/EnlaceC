@@ -84,26 +84,26 @@ public class PadreListFragment extends ListFragment {
 		
 		 final Activity actividad = this.getActivity();
 		 //final ProgressDialog dialog = ProgressDialog.show(this.getActivity(), "Connecting...", "Please wait...", false);
-		Thread t = new Thread (  new Runnable() {
-	  	      @Override
-	  	      public void run() {
+		///Thread t = new Thread (  new Runnable() {
+	  	   ///   @Override
+	  	      ///public void run() {
 	  	        // Create a connection
 	  	    	  
 	  		  	    	
 	  	    	try 
 	  	    	{
 	  		  	    
-	  	    		PbroOscarContent.GetContent();
+	  	    		///PbroOscarContent.GetContent();
 	  	    		
-	  	    		actividad.runOnUiThread(new Runnable() {
+	  	    	///	actividad.runOnUiThread(new Runnable() {
 
-	  	    			@Override
-	  	    			public void run() {
+	  	    			///@Override
+	  	    			///public void run() {
 	  	    				setListAdapter(new ArrayAdapter<PbroOscarContent.PbroOscarItem>(getActivity(),
 	  	  	  	  				com.annwyn.enlacecatolico.R.layout.my_list  ,  
 	  	  	  	  				com.annwyn.enlacecatolico.R.id.text1  , PbroOscarContent.ITEMS));
-	  	    			    }
-	  	    			});
+	  	    			   /// }
+	  	    			///});
 	  	    		 	
 	  	    		
 	  	    		 	    		
@@ -118,11 +118,11 @@ public class PadreListFragment extends ListFragment {
 	  	    		
 	  	    	}
 	  	              
-	  	           }
-	  	      }
+	  	       ///    }
+	  	      ///}
 		
-				);
-	  	    t.start();
+				///);
+	  	    ///t.start();
 	  	  //dialog.show();
 	  	  
 	    }

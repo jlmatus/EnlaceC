@@ -84,25 +84,25 @@ public class AciListFragment extends ListFragment {
 		
 		 final Activity actividad = this.getActivity();
 		 //final ProgressDialog dialog = ProgressDialog.show(this.getActivity(), "Connecting...", "Please wait...", false);
-		Thread t = new Thread (  new Runnable() {
-	  	      @Override
-	  	      public void run() {
+		///Thread t = new Thread (  new Runnable() {
+	  	   ///   @Override
+	  	      ///public void run() {
 	  	        // Create a connection
 	  	    	  
 	  		  	    	
 	  	    	try 
 	  	    	{
-	  	    		AciPrensaContent.GetContent();	
+	  	    	///	AciPrensaContent.GetContent();	
 	  	    		
-	  	    		actividad.runOnUiThread(new Runnable() {
+	  	    		///actividad.runOnUiThread(new Runnable() {
 
-	  	    			@Override
-	  	    			public void run() {
+	  	    			///@Override
+	  	    			///public void run() {
 	  	    		setListAdapter(new ArrayAdapter<AciPrensaContent.AciPrensaItem>(getActivity(),
 	  	  				com.annwyn.enlacecatolico.R.layout.my_list  ,  
 	  	  				com.annwyn.enlacecatolico.R.id.text1  , AciPrensaContent.ITEMS)); 	    		
-	  	    		    }
-  	    			});	    		
+	  	    		    ///}
+  	    			///});	    		
 	  	    		//dialog.dismiss();
 	  	    		
 	  	    		}	  
@@ -114,11 +114,11 @@ public class AciListFragment extends ListFragment {
 	  	    		
 	  	    	}
 	  	              
-	  	           }
-	  	      }
+	  	           ///}
+	  	      ///}
 		
-				);
-	  	    t.start();
+				///);
+	  	    ///t.start();
 	  	  //dialog.show();
 	  	  
 	    }
