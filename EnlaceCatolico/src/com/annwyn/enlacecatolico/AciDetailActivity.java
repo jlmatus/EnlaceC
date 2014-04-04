@@ -26,8 +26,9 @@ public class AciDetailActivity extends FragmentActivity {
 		setContentView(R.layout.activity_articulo_detail);
 
 		// Show the Up button in the action bar.
-		getActionBar().setDisplayHomeAsUpEnabled(true);
-		getActionBar().setTitle("EnlaceCatolico");
+		getActionBar().setDisplayHomeAsUpEnabled(false);
+		getActionBar().setDisplayShowTitleEnabled(false);
+		//getActionBar().setTitle("EnlaceCatolico");
 		
 
 		// savedInstanceState is non-null when there is fragment state

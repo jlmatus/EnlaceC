@@ -27,8 +27,9 @@ public final class R {
         public static final int white=0x7f040003;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
-        public static final int splash_screen_bg=0x7f020001;
+        public static final int ec_splash=0x7f020000;
+        public static final int ic_launcher=0x7f020001;
+        public static final int splash_screen_bg=0x7f020002;
     }
     public static final class id {
         public static final int articulo_detail=0x7f070003;
@@ -36,9 +37,10 @@ public final class R {
         public static final int articulo_detail_container=0x7f070000;
         public static final int articulo_list=0x7f070001;
         public static final int fragment_container1=0x7f070004;
+        public static final int imageViewLogo=0x7f070008;
         public static final int padre_detail_container=0x7f070006;
         public static final int padre_list=0x7f070005;
-        public static final int progress_bar=0x7f070008;
+        public static final int progress_bar=0x7f070009;
         public static final int text1=0x7f070007;
     }
     public static final class layout {
@@ -91,11 +93,13 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f060005;
+        public static final int AppBaseTheme=0x7f060007;
+        public static final int CuerpoText=0x7f060005;
         public static final int CustomWindowTitle=0x7f060002;
         public static final int CustomWindowTitleText=0x7f060003;
         public static final int MyActionBar=0x7f060001;
         public static final int ThemeSelector=0x7f060000;
+        public static final int TituloText=0x7f060006;
         public static final int WindowTitle=0x7f060004;
     }
 }
