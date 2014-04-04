@@ -9,9 +9,10 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.WindowManager;
+import android.widget.Toast;
 
 
 
@@ -33,6 +34,23 @@ public class Menu extends Activity  implements ICallbacks, ProgressListener {
 	@Override
 	protected void onCreate(Bundle savedInstantce){
 		super.onCreate(savedInstantce);
+        
+		
+		
+		//if (!isOnline())
+		//{
+			
+			//Toast.makeText(getApplicationContext(), "this is my Toast message!!! =)",
+				//	   Toast.LENGTH_LONG).show();
+		//} // if finish
+		
+		
+		ActionBar actionBar = getActionBar();
+		actionBar.hide();
+		WindowManager.LayoutParams attrs = getWindow().getAttributes();
+		 attrs.flags |= WindowManager.LayoutParams.FLAG_FULLSCREEN;
+		 getWindow().setAttributes(attrs);
+		 
 		final FragmentManager fm = getFragmentManager();
         mDataLoaderFragment = (DataLoaderFragment) fm.findFragmentByTag(TAG_DATA_LOADER);
         if (mDataLoaderFragment == null) {
@@ -207,13 +225,20 @@ setContentView(R.layout.menu_principal);
 			
 			
 		}
-		
+		WindowManager.LayoutParams attrs = getWindow().getAttributes();
+		attrs.flags &= ~WindowManager.LayoutParams.FLAG_FULLSCREEN;
+		 getWindow().setAttributes(attrs);
+		 
 		ActionBar actionBar = getActionBar();
+		actionBar.show();
+		actionBar.setDisplayShowTitleEnabled(false);
+		
 		actionBar.removeAllTabs();
 		//actionBar.setDisplayHomeAsUpEnabled(true);
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		
 		ActionBar.Tab tab1 = actionBar.newTab().setText("Padre Oscar");
+		
 		ActionBar.Tab tab2 = actionBar.newTab().setText("ACI Prensa");
 		
 		Fragment PadreListFragment = new PadreListFragment();
@@ -228,6 +253,19 @@ setContentView(R.layout.menu_principal);
 		actionBar.addTab(tab1);
 		actionBar.addTab(tab2);
     	
+    }
+    
+    private Boolean isOnline() {
+        try {
+            Process p1 = java.lang.Runtime.getRuntime().exec("ping -c 1 www.google.com");
+            int returnVal = p1.waitFor();
+            boolean reachable = (returnVal==0);
+            return reachable;
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return false;
     }
 	
 }

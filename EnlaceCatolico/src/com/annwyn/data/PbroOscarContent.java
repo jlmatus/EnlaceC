@@ -58,9 +58,11 @@ public class PbroOscarContent {
 						id++;
 						title = (property.getFirstChild().getNodeValue());
 					} else if (name.equalsIgnoreCase("description")){
-						content = Html.fromHtml(property.getFirstChild().getNodeValue()).toString();				
+						content = setCleanString(property.getFirstChild().getNodeValue().toString());
 					}
 				}
+				//damos tratamiento al titulo
+				title = setRemoveWord(title," ",7);
 				addItem(new PbroOscarItem(Integer.toString(id),title,content));
 			}
 		} catch (Exception e) {
@@ -116,30 +118,43 @@ public class PbroOscarContent {
 	private static String setCleanString(String Cadena)
 	{
 		// Variable a retornar 
-		String stringClean = "";
+		String strContent = "";
 		
-		// Eliminamos de caracteres HTML 
-		Cadena = Cadena.replace("<br/>", ""); 
-		Cadena = Cadena.replace("<p>", "");
-		Cadena = Cadena.replace("&quot;", "\"");
-		Cadena = Cadena.replace("&amp;", "&");
-		Cadena = Cadena.replace("&lt;", "<");
-		Cadena = Cadena.replace("&gt;", ">");
-		Cadena = Cadena.replace("&iexcl;", "¡");
-		Cadena = Cadena.replace("&copy;", "©");
-		Cadena = Cadena.replace("&reg;", "®");
-		Cadena = Cadena.replace("&iquest;", "¿");
-		Cadena = Cadena.replace("&aacute;", "á");
-		Cadena = Cadena.replace("&eacute;", "é");
-		Cadena = Cadena.replace("&iacute;", "í");
-		Cadena = Cadena.replace("&oacute;", "ó");
-		Cadena = Cadena.replace("&uacute;", "ú");
-		Cadena = Cadena.replace("&uuml;", "ü");
-		Cadena = Cadena.replace("&ntilde;", "ñ");
-		Cadena = Cadena.replace("&Ntilde;", "Ñ");
+		// Pasamos el valor a la variable interna 
+		strContent = Cadena; 
+		
+		// Eliminamos las imagenes  
+		strContent = strContent.replaceAll("<img.+/(img)*>", "");
+		
+		// Eliminamos la linea de parrafo donde se establecia la imagen
+		strContent = strContent.replaceAll("<p style=\"text-align: justify;\"><span style=\"line-height: 1.3em;\"></span></p>", "");
+		strContent = strContent.replaceAll("<p style=\"text-align: justify;\"> </p>", "");
+		
+		// Formateamos como HTML 
+		strContent = Html.fromHtml(strContent).toString();
 		
 		// Retornamos la variable 
-		return stringClean;
+		return strContent;
 	}
+	
+
+	private static String setRemoveWord(String Cadena, String Delim, int Cant)
+	{
+		 String[] items = Cadena.split(Delim);
+		 String NewCadena = "";
+		 int i = 0;
+		 for (String item : items)
+		 {
+			 NewCadena = NewCadena + " " + item;
+			 //System.out.println("item = " + item);
+		     if (i == Cant-1)
+		     {
+		    	 return NewCadena + " ...";
+		      }
+		     i++;
+		  }
+		  return NewCadena;
+	}
+	
 }
 

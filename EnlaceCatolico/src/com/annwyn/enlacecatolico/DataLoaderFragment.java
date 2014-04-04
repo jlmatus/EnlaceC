@@ -6,6 +6,7 @@ import com.annwyn.data.PbroOscarContent;
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 public class DataLoaderFragment extends Fragment {
 
@@ -32,10 +33,13 @@ public class DataLoaderFragment extends Fragment {
     private ProgressListener mProgressListener;
     private Double mResult = Double.NaN;
     private LoadingTask mTask;
+    private Activity myActivity;
 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
+        myActivity=activity;
+        
 
         // Keep this Fragment around even during config changes
         setRetainInstance(true);
@@ -93,8 +97,12 @@ public class DataLoaderFragment extends Fragment {
         @Override
         protected Double doInBackground(Void... params) {
             double result = 0;
+            try {
             PbroOscarContent.GetContent();            
-            
+            }
+            catch(Exception e) {
+            return null;
+            }
             for (int i = 0; i < 50; i++) {
                 try {
                     result += Math.sqrt(i);
@@ -122,6 +130,11 @@ public class DataLoaderFragment extends Fragment {
         @Override
         protected void onPostExecute(Double result) {
             mResult = result;
+            if (result==null)
+            {
+            	Toast.makeText(myActivity.getApplicationContext() , "Hay un problema con la conexión a Internet, no se pudo obtener el contenido",
+ 					   Toast.LENGTH_LONG).show();
+            }
             mTask = null;
             if (mProgressListener != null) {
                 mProgressListener.onCompletion(mResult);
